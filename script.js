@@ -13,12 +13,10 @@ function getTracks() {
                      <span class="track-artist">Artist: ${track.artist}</span>
                      <span class="track-length">Length: ${track.length}</span>
                  </div>
-             
                  <div class="track-Control"> 
-                      <i class="fas fa-cloud-download-alt" onclick="login('${track.url}')" style="cursor:pointer; color: white; font-size: 1.5rem;"></i>
+                      <i class="fas fa-cloud-download-alt" onclick="download('${track.url}')" style="cursor:pointer; color: white; font-size: 1.5rem;"></i>
                  </div>
              </div>`;
-
             }); 
             content += '</div>'
             document.body.innerHTML = document.body.innerHTML + content;
@@ -42,10 +40,39 @@ function checkSession(url , sessionValue) {
         };
         xhttp.open("GET", "index.php?file="+url);
         xhttp.send();
-        var base_url = window.location.origin;
+        let base_url = window.location.origin;
         window.location.href = base_url+"/leap13/index.php?file="+url;
     } else {
         document.getElementById("myForm").style.display = "block";
         document.getElementById("trackurl").value = url;
     }
+}
+
+function login() {
+    let userName = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let trackUrl = document.getElementById("trackurl").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+           
+            if(this.responseText === 'false') {
+                
+                alert("wrong username or password");
+                window.location.href = window.location.origin+"/leap13/index.php";
+            } 
+            else { 
+                document.getElementById("myForm").style.display = "none";
+                window.location.href = window.location.origin+"/leap13/index.php?file="+trackUrl;
+                setTimeout(function(){ 
+                    window.location.href = window.location.origin+"/leap13/index.php";  
+                }, 3000);
+            }
+        }
+    };
+    xhttp.open("POST", "auth.php");
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    var data = {username: userName, password: password, url: trackUrl}
+    xhttp.send(JSON.stringify(data));
+    
 }

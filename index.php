@@ -20,14 +20,13 @@ class DownloadTrack implements Download {
             header('Content-Type: application/octet-stream');
             header("Content-Transfer-Encoding: Binary"); 
             header("Content-disposition: attachment; filename=\"".$file_name."\"");
-            // echo '<script>document.getElementById("myForm").style.display = "none"; </script>'; 
             readfile($file_url);
+            exit;
         }
     }
 }
-
-
 $newFile = new DownloadTrack();
+
 ?>
 
 <!DOCTYPE html>
@@ -41,18 +40,19 @@ $newFile = new DownloadTrack();
 </head>
 <body>
 <div class="form-popup" id="myForm">
-  <form action="auth.php" method="post" class="form-container">
+    <!--  action="auth.php" method="post" -->
+  <form class="form-container">
     <h1>Login</h1>
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Enter UserName" name="username" required>
+    <label for="username"><b>Username</b></label>
+    <input type="text" id="username" placeholder="Enter UserName"  required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+    <label for="password"><b>Password</b></label>
+    <input type="password" id="password" placeholder="Enter Password"  required>
 
-    <input type="hidden" id="trackurl" name="url" >
+    <input type="hidden" id="trackurl"  >
 
-    <button type="submit" class="btn" onClick="window.parent.location.reload();window.close()">Login</button>
+    <button  class="btn" onClick="login()">Login</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
@@ -61,7 +61,7 @@ $newFile = new DownloadTrack();
 <script src="script.js"></script>
 
 <script>
- function login(url) {
+ function download(url) {
     var sessionValue = "<?php echo isset($_SESSION['userName']); ?>";
     checkSession(url, sessionValue); 
 }
