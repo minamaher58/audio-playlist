@@ -1,11 +1,5 @@
 <?php
 session_start();
-// if(isset($_SESSION["userName"])) {
-// echo '<script type="text/javascript">document.getElementById("myForm").style.display = "none"; </script>';
-// }
-
-
-
 // unset ($_SESSION["userName"] );
 
 interface Download {
@@ -14,7 +8,7 @@ interface Download {
 
 class DownloadTrack implements Download {
     function __construct() {
-        echo "<script>document.getElementById('myForm').style.display = 'none'; </script>";
+     
         $this->downloadFile();
     }
     // Download Track
@@ -25,15 +19,17 @@ class DownloadTrack implements Download {
             $file_url =  $file_name;
             header('Content-Type: application/octet-stream');
             header("Content-Transfer-Encoding: Binary"); 
-            header("Content-disposition: attachment; filename=\"".$file_name."\""); 
+            header("Content-disposition: attachment; filename=\"".$file_name."\"");
+            // echo '<script>document.getElementById("myForm").style.display = "none"; </script>'; 
             readfile($file_url);
-            exit;
         }
     }
 }
 
+
 $newFile = new DownloadTrack();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +40,6 @@ $newFile = new DownloadTrack();
     <script src="https://kit.fontawesome.com/04d1f4c46c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 <div class="form-popup" id="myForm">
   <form action="auth.php" method="post" class="form-container">
     <h1>Login</h1>
@@ -57,7 +52,7 @@ $newFile = new DownloadTrack();
 
     <input type="hidden" id="trackurl" name="url" >
 
-    <button type="submit" class="btn" >Login</button>
+    <button type="submit" class="btn" onClick="window.parent.location.reload();window.close()">Login</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>

@@ -15,7 +15,7 @@ function getTracks() {
                  </div>
              
                  <div class="track-Control"> 
-                      <i class="fas fa-cloud-download-alt" onclick="login('${track.url}')" style="cursor:pointer; color: #424240;; font-size: 1.5rem;"></i>
+                      <i class="fas fa-cloud-download-alt" onclick="login('${track.url}')" style="cursor:pointer; color: white; font-size: 1.5rem;"></i>
                  </div>
              </div>`;
 
