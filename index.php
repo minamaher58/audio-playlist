@@ -1,6 +1,6 @@
 <?php
 session_start();
-// unset ($_SESSION["userName"] );
+// unset ($_SESSION["userName"]);
 
 interface Download {
     public function downloadFile();
@@ -45,12 +45,12 @@ $newFile = new DownloadTrack();
     <h1>Login</h1>
     <p id="error"></p>
     <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter UserName"  required>
+    <input type="text" id="username" placeholder="Enter UserName">
 
     <label for="password"><b>Password</b></label>
-    <input type="password" id="password" placeholder="Enter Password"  required>
+    <input type="password" id="password" placeholder="Enter Password">
 
-    <input type="hidden" id="trackurl"  >
+    <input type="hidden" id="trackurl">
 
     <button  class="btn" onclick="login()">Login</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>

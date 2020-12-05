@@ -45,10 +45,8 @@ function login() {
     let trackUrl = document.getElementById("trackurl").value;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function(e) {
-      
+    xhttp.onreadystatechange = function() {  
         if (this.readyState == 4 && this.status == 200) {
-             e.preventDefault();
             if(this.responseText === 'false') { 
                 document.getElementById("error").innerText="Wrong UserName or Password";
             } 
