@@ -1,4 +1,3 @@
-getTracks();
 function getTracks() {
     let content='<div class="tracks">';
     var xhttp = new XMLHttpRequest();
@@ -44,14 +43,14 @@ function login() {
     let userName = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let trackUrl = document.getElementById("trackurl").value;
+
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function(e) {
+      
         if (this.readyState == 4 && this.status == 200) {
-           
-            if(this.responseText === 'false') {
-                
-                alert("wrong username or password");
-                window.location.href = window.location.origin+"/leap13/index.php";
+             e.preventDefault();
+            if(this.responseText === 'false') { 
+                document.getElementById("error").innerText="Wrong UserName or Password";
             } 
             else { 
                 document.getElementById("myForm").style.display = "none";
@@ -66,5 +65,4 @@ function login() {
     xhttp.setRequestHeader("Content-Type", "application/json");
     var data = {username: userName, password: password, url: trackUrl}
     xhttp.send(JSON.stringify(data));
-    
 }

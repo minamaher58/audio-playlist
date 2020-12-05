@@ -39,11 +39,11 @@ $newFile = new DownloadTrack();
     <script src="https://kit.fontawesome.com/04d1f4c46c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="form-popup" id="myForm">
-    <!--  action="auth.php" method="post" -->
-  <form class="form-container">
-    <h1>Login</h1>
 
+<div class="form-popup" id="myForm">
+  <div class="form-container">
+    <h1>Login</h1>
+    <p id="error"></p>
     <label for="username"><b>Username</b></label>
     <input type="text" id="username" placeholder="Enter UserName"  required>
 
@@ -52,15 +52,16 @@ $newFile = new DownloadTrack();
 
     <input type="hidden" id="trackurl"  >
 
-    <button  class="btn" onClick="login()">Login</button>
+    <button  class="btn" onclick="login()">Login</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+   </div>
 </div>
 
 </body>
-<script src="script.js"></script>
 
+<script src="script.js"></script>
 <script>
+ getTracks();
  function download(url) {
     var sessionValue = "<?php echo isset($_SESSION['userName']); ?>";
     checkSession(url, sessionValue); 

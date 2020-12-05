@@ -39,6 +39,10 @@ body {
     }
 }
 
+#error {
+  color: red;
+}
+
 @keyframes rotate {
   to {
     transform: rotateX(360deg);

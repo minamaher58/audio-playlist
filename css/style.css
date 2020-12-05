@@ -33,6 +33,10 @@ body {
   animation-duration: 2s;
   animation-fill-mode: forwards;
 }
+#error {
+  color: red;
+}
+
 @keyframes rotate {
   to {
     transform: rotateX(360deg);
