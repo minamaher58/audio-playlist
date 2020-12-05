@@ -32,14 +32,6 @@ function closeForm() {
 
 function checkSession(url , sessionValue) {
     if(sessionValue) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(this.response);
-            }
-        };
-        xhttp.open("GET", "index.php?file="+url);
-        xhttp.send();
         let base_url = window.location.origin;
         window.location.href = base_url+"/leap13/index.php?file="+url;
     } else {
