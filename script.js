@@ -21,7 +21,7 @@ function getTracks() {
             document.body.innerHTML = document.body.innerHTML + content;
         }
     };
-    xhttp.open("GET", "https://api.jsonbin.io/b/5f69e387302a837e956b59b5");
+    xhttp.open("GET", "api url here");
     xhttp.send();
 }
 
