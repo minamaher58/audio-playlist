@@ -9,7 +9,7 @@
         public function authenticate() {
             $request = file_get_contents('php://input');
             $array = json_decode($request,true);
-            $url = 'http://nilepromotion.com/pa-test/wp-json/test/v2/creds?username='. $array['username'] .'&password=' . $array['password'];
+            $url = 'api url here?username='. $array['username'] .'&password=' . $array['password'];
         
             $options = array(
                 'http' => array(
